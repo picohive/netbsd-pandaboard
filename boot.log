@@ -1,0 +1,337 @@
+[   1.0000000] NetBSD/evbarm (fdt) booting ...
+[   1.0000000] [ Kernel symbol table missing! ]
+[   1.0000000] Found CTF at 0x8096e1bc, size 0x70052
+[   1.0000000] Loaded initial symtab at 0x809de210, strtab at 0x80a66610, # entries 34880
+[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
+[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
+[   1.0000000]     2024
+[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.
+[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993
+[   1.0000000]     The Regents of the University of California.  All rights reserved.
+
+[   1.0000000] NetBSD 10.0 (GENERIC) #11: Fri Mar 14 16:52:14 CST 2025
+[   1.0000000]  rxg@picohive:/home/rxg/10.0/usr/obj.evbarm/sys/arch/evbarm/compile/GENERIC
+[   1.0000000] total memory = 1024 MB
+[   1.0000000] avail memory = 986 MB
+[   1.0000000] armfdt0 (root)
+[   1.0000000] simplebus0 at armfdt0: TI OMAP4 PandaBoard
+[   1.0000000] simplebus1 at simplebus0
+[   1.0000000] cpus0 at simplebus0
+[   1.0000000] simplebus2 at simplebus0
+[   1.0000000] cpu0 at cpus0: Cortex-A9 r2p10 (Cortex V7A core)
+[   1.0000000] cpu0: DC enabled IC enabled WB enabled LABT branch prediction enabled
+[   1.0000000] cpu0: L1 32KB/32B 4-way (256 set) VIPT Instruction cache
+[   1.0000000] cpu0: L1 32KB/32B 4-way (256 set) write-back-locking-C PIPT Data cache
+[   1.0000000] cpu0: L2 1024KB/32B 16-way (2048 set) write-back-locking-D PIPT Unified cache
+[   1.0000000] vfp0 at cpu0: NEON MPE (VFP 3.0+), rounding, NaN propagation, denormals
+[   1.0000000] cpufreqdt0 at cpu0
+[   1.0000000] cpu1 at cpus0: disabled (unresponsive)
+[   1.0000000] simplebus3 at simplebus1
+[   1.0000000] simplebus4 at simplebus1
+[   1.0000000] simplebus5 at simplebus1
+[   1.0000000] simplebus6 at simplebus1
+[   1.0000000] simplebus7 at simplebus3
+[   1.0000000] simplebus8 at simplebus4
+[   1.0000000] simplebus9 at simplebus3
+[   1.0000000] simplebus10 at simplebus3
+[   1.0000000] simplebus11 at simplebus4
+[   1.0000000] simplebus12 at simplebus5
+[   1.0000000] simplebus13 at simplebus6
+[   1.0000000] simplebus14 at simplebus3
+[   1.0000000] simplebus15 at simplebus5
+[   1.0000000] simplebus16 at simplebus3
+[   1.0000000] simplebus17 at simplebus3
+[   1.0000000] simplebus18 at simplebus3
+[   1.0000000] simplebus19 at simplebus4
+[   1.0000000] simplebus20 at simplebus7
+[   1.0000000] simplebus21 at simplebus12
+[   1.0000000] simplebus22 at simplebus7
+[   1.0000000] simplebus23 at simplebus12
+[   1.0000000] simplebus24 at simplebus12
+[   1.0000000] simplebus25 at simplebus20
+[   1.0000000] gic0 at simplebus0: GIC
+[   1.0000000] armgic0 at gic0: Generic Interrupt Controller, 160 sources (149 valid)
+[   1.0000000] armgic0: 16 Priorities, 128 SPIs, 5 PPIs, 16 SGIs
+[   1.0000000] syscon0 at simplebus25: System Controller Registers
+[   1.0000000] l2cc0 at simplebus0
+[   1.0000000] arml2cc0 at l2cc0: ARM PL310 r3p1a L2 Cache Controller (disabled)
+[   1.0000000] arml2cc0: cache enabled
+[   1.0000000] tisysc0 at simplebus7
+[   1.0000000] tisysc1 at simplebus8
+[   1.0000000] tisysc2 at simplebus7
+[   1.0000000] tisysc3 at simplebus8
+[   1.0000000] tisysc4 at simplebus9
+[   1.0000000] tisysc5 at simplebus10
+[   1.0000000] tisysc6 at simplebus11
+[   1.0000000] tisysc7 at simplebus12
+[   1.0000000] tisysc8 at simplebus7
+[   1.0000000] tisysc9 at simplebus12
+[   1.0000000] tisysc10 at simplebus11
+[   1.0000000] tisysc11 at simplebus13
+[   1.0000000] tisysc12 at simplebus1
+[   1.0000000] tisysc13 at simplebus12
+[   1.0000000] tisysc14 at simplebus8
+[   1.0000000] tisysc15 at simplebus8
+[   1.0000000] tisysc16 at simplebus11
+[   1.0000000] tisysc17 at simplebus11
+[   1.0000000] tisysc18 at simplebus11
+[   1.0000000] tisysc19 at simplebus7
+[   1.0000000] tisysc20 at simplebus7
+[   1.0000000] tisysc21 at simplebus7
+[   1.0000000] tisysc22 at simplebus9
+[   1.0000000] tisysc23 at simplebus9
+[   1.0000000] tisysc24 at simplebus9
+[   1.0000000] tisysc25 at simplebus9
+[   1.0000000] tisysc26 at simplebus9
+[   1.0000000] tisysc27 at simplebus9
+[   1.0000000] tisysc28 at simplebus12
+[   1.0000000] tisysc29 at simplebus12
+[   1.0000000] tisysc30 at simplebus12
+[   1.0000000] tisysc31 at simplebus12
+[   1.0000000] tisysc32 at simplebus12
+[   1.0000000] tisysc33 at simplebus12
+[   1.0000000] tisysc34 at simplebus12
+[   1.0000000] tisysc35 at simplebus12
+[   1.0000000] tisysc36 at simplebus12
+[   1.0000000] tisysc37 at simplebus12
+[   1.0000000] tisysc38 at simplebus12
+[   1.0000000] tisysc39 at simplebus12
+[   1.0000000] tisysc40 at simplebus12
+[   1.0000000] tisysc41 at simplebus12
+[   1.0000000] tisysc42 at simplebus12
+[   1.0000000] tisysc43 at simplebus12
+[   1.0000000] tisysc44 at simplebus12
+[   1.0000000] tisysc45 at simplebus12
+[   1.0000000] tisysc46 at simplebus12
+[   1.0000000] tisysc47 at simplebus12
+[   1.0000000] tisysc48 at simplebus12
+[   1.0000000] tisysc49 at simplebus12
+[   1.0000000] tisysc50 at simplebus12
+[   1.0000000] tisysc51 at simplebus12
+[   1.0000000] tisysc52 at simplebus12
+[   1.0000000] tisysc53 at simplebus12
+[   1.0000000] tisysc54 at simplebus15
+[   1.0000000] tisysc55 at simplebus13
+[   1.0000000] tisysc56 at simplebus13
+[   1.0000000] tisysc57 at simplebus13
+[   1.0000000] tisysc58 at simplebus13
+[   1.0000000] tisysc59 at simplebus13
+[   1.0000000] tisysc60 at simplebus13
+[   1.0000000] tisysc61 at simplebus13
+[   1.0000000] tisysc62 at simplebus13
+[   1.0000000] tisysc63 at simplebus13
+[   1.0000000] tisysc64 at simplebus1
+[   1.0000000] tisysc65 at simplebus1
+[   1.0000000] tisysc66 at simplebus1
+[   1.0000000] tisysc67 at simplebus1
+[   1.0000000] a9ptmr0 at simplebus0: couldn't get clock
+[   1.0000000] tisysc68 at simplebus1
+[   1.0000000] tisysc69 at simplebus1
+[   1.0000000] tisysc70 at simplebus1
+[   1.0000000] tisysc71 at simplebus9
+[   1.0000000] tisysc72 at simplebus9
+[   1.0000000] tisysc73 at simplebus10
+[   1.0000000] tisysc74 at simplebus12
+[   1.0000000] tisysc75 at simplebus13
+[   1.0000000] tisysc76 at simplebus13
+[   1.0000000] omap4prcm0 at tisysc0: OMAP4xxx PRCM (CM1)
+[   1.0000000] omap4prcm1 at tisysc1: OMAP4xxx PRCM (PRM)
+[   1.0000000] omap4prcm2 at tisysc2: OMAP4xxx PRCM (CM2)
+[   1.0000000] syscon1 at tisysc5: System Controller Registers
+[   1.0000000] ffclock0 at omap4prcm0: x1 /2 fixed-factor clock
+[   1.0000000] fclock0 at omap4prcm0: 12000000 Hz fixed clock (virt_12000000_ck)
+[   1.0000000] fclock1 at omap4prcm0: 13000000 Hz fixed clock (virt_13000000_ck)
+[   1.0000000] fclock2 at omap4prcm0: 16800000 Hz fixed clock (virt_16800000_ck)
+[   1.0000000] fclock3 at omap4prcm0: 19200000 Hz fixed clock (virt_19200000_ck)
+[   1.0000000] fclock4 at omap4prcm0: 26000000 Hz fixed clock (virt_26000000_ck)
+[   1.0000000] fclock5 at omap4prcm0: 27000000 Hz fixed clock (virt_27000000_ck)
+[   1.0000000] fclock6 at omap4prcm0: 38400000 Hz fixed clock (virt_38400000_ck)
+[   1.0000000] timuxclk0 at omap4prcm1: TI mux clock (sys_clkin_ck@110)
+[   1.0000000] fclock7 at omap4prcm0: 32768 Hz fixed clock (sys_32k_ck)
+[   1.0000000] ffclock1 at omap4prcm0: x1 /16 fixed-factor clock
+[   1.0000000] tidivclk0 at omap4prcm2: TI divider clock (dpll_per_m4x2_ck@158)
+[   1.0000000] tidivclk1 at omap4prcm1: TI divider clock (usim_ck@1858)
+[   1.0000000] fclock8 at omap4prcm0: 12000000 Hz fixed clock (pad_clks_src_ck)
+[   1.0000000] fclock9 at omap4prcm0: 12000000 Hz fixed clock (slimbus_src_clk)
+[   1.0000000] timuxclk1 at omap4prcm1: TI mux clock (abe_dpll_refclk_mux_ck@10c)
+[   1.0000000] timuxclk2 at omap4prcm1: TI mux clock (abe_dpll_bypass_clk_mux_ck@108)
+[   1.0000000] tidivclk2 at omap4prcm0: TI divider clock (dpll_abe_m2x2_ck@1f0)
+[   1.0000000] tidivclk3 at omap4prcm0: TI divider clock (dpll_abe_m3x2_ck@1f4)
+[   1.0000000] timuxclk3 at omap4prcm0: TI mux clock (core_hsd_byp_clk_mux_ck@12c)
+[   1.0000000] tidivclk4 at omap4prcm0: TI divider clock (dpll_core_m2_ck@130)
+[   1.0000000] tidivclk5 at omap4prcm0: TI divider clock (dpll_core_m5x2_ck@13c)
+[   1.0000000] tidivclk6 at omap4prcm0: TI divider clock (dpll_core_m4x2_ck@138)
+[   1.0000000] tidivclk7 at omap4prcm0: TI divider clock (div_iva_hs_clk@1dc)
+[   1.0000000] timuxclk4 at omap4prcm0: TI mux clock (iva_hsd_byp_clk_mux_ck@1ac)
+[   1.0000000] tidivclk8 at omap4prcm0: TI divider clock (dpll_iva_m4x2_ck@1b8)
+clk: failed to set dpll_iva_m4x2_ck@1b8 rate to 465600000 Hz, error 22
+[   1.0000000] tidivclk9 at omap4prcm0: TI divider clock (dpll_iva_m5x2_ck@1bc)
+clk: failed to set dpll_iva_m5x2_ck@1bc rate to 266100000 Hz, error 22
+[   1.0000000] tidivclk10 at omap4prcm0: TI divider clock (div_mpu_hs_clk@19c)
+[   1.0000000] tidivclk11 at omap4prcm0: TI divider clock (div_core_ck@100)
+[   1.0000000] tidivclk12 at omap4prcm0: TI divider clock (l3_div_ck@100)
+[   1.0000000] tidivclk13 at omap4prcm0: TI divider clock (dpll_abe_m2_ck@1f0)
+[   1.0000000] ffclock2 at omap4prcm0: x1 /2 fixed-factor clock
+[   1.0000000] timuxclk5 at omap4prcm2: TI mux clock (per_hsd_byp_clk_mux_ck@14c)
+[   1.0000000] ffclock3 at omap4prcm0: x1 /3 fixed-factor clock
+[   1.0000000] tidivclk14 at omap4prcm2: TI divider clock (dpll_per_m6x2_ck@160)
+[   1.0000000] tidivclk15 at omap4prcm2: TI divider clock (dpll_per_m2x2_ck@150)
+[   1.0000000] tidivclk16 at omap4prcm2: TI divider clock (dpll_per_m2_ck@150)
+[   1.0000000] tidivclk17 at omap4prcm2: TI divider clock (dpll_usb_m2_ck@190)
+[   1.0000000] tidivclk18 at omap4prcm2: TI divider clock (init_60m_fclk@104)
+[   1.0000000] fclock10 at omap4prcm0: 60000000 Hz fixed clock (xclk60mhsp1_ck)
+[   1.0000000] fclock11 at omap4prcm0: 60000000 Hz fixed clock (xclk60mhsp2_ck)
+[   1.0000000] ffclock4 at omap4prcm1: x1 /1 fixed-factor clock
+[   1.0000000] timuxclk6 at omap4prcm1: TI mux clock (l4_wkup_clk_mux_ck@108)
+[   1.0000000] tidivclk19 at omap4prcm1: TI divider clock (syc_clk_div_ck@100)
+[   1.0000000] fclock12 at omap4prcm0: 59000000 Hz fixed clock (extalt_clkin_ck)
+[   1.0000000] fclock13 at omap4prcm0: 12000000 Hz fixed clock (pad_slimbus_core_clks_ck)
+[   1.0000000] fclock14 at omap4prcm0: 32768 Hz fixed clock (secure_32k_clk_src_ck)
+[   1.0000000] fclock15 at omap4prcm0: 0 Hz fixed clock (tie_low_clock_ck)
+[   1.0000000] fclock16 at omap4prcm0: 60000000 Hz fixed clock (utmi_phy_clkout_ck)
+[   1.0000000] fclock17 at omap4prcm0: 60000000 Hz fixed clock (xclk60motg_ck)
+[   1.0000000] ffclock5 at omap4prcm0: x1 /8 fixed-factor clock
+[   1.0000000] tidivclk20 at omap4prcm0: TI divider clock (abe_clk@108)
+[   1.0000000] tidivclk21 at omap4prcm0: TI divider clock (dpll_core_m6x2_ck@140)
+[   1.0000000] ffclock6 at omap4prcm0: x1 /2 fixed-factor clock
+[   1.0000000] ffclock7 at omap4prcm0: x1 /2 fixed-factor clock
+[   1.0000000] tidivclk22 at omap4prcm0: TI divider clock (dpll_core_m7x2_ck@144)
+[   1.0000000] tidivclk23 at omap4prcm0: TI divider clock (dpll_mpu_m2_ck@170)
+[   1.0000000] tidivclk24 at omap4prcm0: TI divider clock (l4_div_ck@100)
+[   1.0000000] tidivclk25 at omap4prcm0: TI divider clock (ocp_abe_iclk@528)
+[   1.0000000] ffclock8 at omap4prcm0: x1 /4 fixed-factor clock
+[   1.0000000] fclock18 at omap4prcm0: 0 Hz fixed clock (dummy_ck)
+[   1.0000000] tidivclk26 at omap4prcm2: TI divider clock (dpll_per_m5x2_ck@15c)
+[   1.0000000] tidivclk27 at omap4prcm2: TI divider clock (dpll_per_m7x2_ck@164)
+[   1.0000000] timuxclk7 at omap4prcm2: TI mux clock (ducati_clk_mux_ck@100)
+[   1.0000000] ffclock9 at omap4prcm2: x1 /16 fixed-factor clock
+[   1.0000000] ffclock10 at omap4prcm2: x1 /4 fixed-factor clock
+[   1.0000000] ffclock11 at omap4prcm2: x1 /8 fixed-factor clock
+[   1.0000000] tidivclk28 at omap4prcm2: TI divider clock (func_48m_fclk@108)
+[   1.0000000] ffclock12 at omap4prcm2: x1 /4 fixed-factor clock
+[   1.0000000] tidivclk29 at omap4prcm2: TI divider clock (func_64m_fclk@108)
+[   1.0000000] tidivclk30 at omap4prcm2: TI divider clock (func_96m_fclk@108)
+[   1.0000000] tidivclk31 at omap4prcm2: TI divider clock (per_abe_nc_fclk@108)
+[   1.0000000] pinctrl0 at tisysc5
+[   1.0000000] pinctrl1 at tisysc6
+[   1.0000000] tigpio0 at tisysc7: couldn't decode interrupt
+[   1.0000000] tigpio1 at tisysc9: couldn't decode interrupt
+[   1.0000000] tigpio2 at tisysc10: couldn't decode interrupt
+[   1.0000000] tigpio3 at tisysc32: couldn't decode interrupt
+[   1.0000000] tigpio4 at tisysc33: couldn't decode interrupt
+[   1.0000000] tigpio5 at tisysc34: couldn't decode interrupt
+[   1.0000000] tiiic0 at simplebus21: couldn't decode interrupt
+[   1.0000000] connector0 at simplebus0: DVI connector
+[   1.0000000] tiiic1 at tisysc13: couldn't decode interrupt
+[   1.0000000] connector1 at simplebus0: HDMI connector
+[   1.0000000] com0 at simplebus23: couldn't enable module
+[   1.0000000] com1 at tisysc35: couldn't enable module
+[   1.0000000] com2 at tisysc36: couldn't enable module
+[   1.0000000] com3 at tisysc37: couldn't enable module
+[   1.0000000] tiiic2 at tisysc38: couldn't decode interrupt
+[   1.0000000] tiiic3 at tisysc54: couldn't decode interrupt
+[   1.0000000] fregulator0 at simplebus0: vwl1271
+[   1.0000000] fregulator1 at simplebus0: hsusb1_vbus
+[   1.0000000] tiusbtll0 at tisysc20omap4prcm2: no hwmod with name 'usb_tll_hs'
+: couldn't enable module
+[   1.0000000] usbnopphy0 at simplebus0: USB PHY
+[   1.0000000] tiusb0 at simplebus22omap4prcm2: no hwmod with name 'usb_host_hs'
+: couldn't enable module
+[   1.0000000] /interrupt-controller@48281000 at simplebus0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_mpu_ck@160 at omap4prcm0 not configured
+[   1.0000000] /ocp/sram@40304000 at simplebus1 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@6000/prm@0/clocks/trace_clk_div_ck at omap4prcm1 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_core_m3x2_ck at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_per_m3x2_ck at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@a000/scrm@0 at tisysc3 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_abe_ck@1e0 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_abe_x2_ck@1f0 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_core_ck@120 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_core_x2_ck at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_core_m3x2_gate_ck@134 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_core_m3x2_div_ck@134 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_iva_ck@1a0 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/dpll_iva_x2_ck at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_per_ck@140 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_per_x2_ck@150 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_per_m3x2_gate_ck@154 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_per_m3x2_div_ck@154 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_usb_ck@180 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@2d000/ocp2scp@0 at tisysc4 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@2000/scm@0/control-phy@33c at simplebus25 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@2000/scm@0/control-phy@300 at simplebus25 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/usb_phy_cm_clk32k@640 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@56000/dma-controller@0 at tisysc8 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@100000/target-module@0/omap4_padconf_global@5a0/pbias_regulator@60 at syscon1 not configured
+[   1.0000000] /lpddr2 at simplebus0 not configured
+[   1.0000000] /encoder1 at simplebus0 not configured
+[   1.0000000] /encoder0 at simplebus0 not configured
+[   1.0000000] /ocp/bandgap@4a002260 at simplebus1 not configured
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@32000/mcpdm@0 at tisysc11 not configured
+[   1.0000000] /ocp/target-module@58000000/dss@0 at tisysc12 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@4000/counter@0 at tisysc14 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@6000/prm@0/clocks/usim_fclk@1858 at omap4prcm1 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@6000/prm@0/clocks/bandgap_fclk@1888 at omap4prcm1 not configured
+[   1.0000000] /ocp/interconnect@4a300000/segment@0/target-module@c000/scm@c000 at tisysc15 not configured
+[   1.0000000] tiwdt0 at tisysc16: couldn't enable hwmod
+[   1.0000000] omaptimer0 at tisysc17omap4prcm2: no hwmod with name 'timer1'
+: couldn't enable module
+[   1.0000000] /ocp/interconnect@4a300000/segment@10000/target-module@c000/keypad@0 at tisysc18 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/pad_clks_ck@108 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@4000/cm1@0/clocks/slimbus_clk@108 at omap4prcm0 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/dpll_usb_clkdcoldo_ck@1b4 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@8000/cm2@0/clocks/sha2md5_fck@15c8 at omap4prcm2 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@58000/hsi@0 at tisysc19 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@0/target-module@66000/mmu@0 at tisysc21 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@2b000/usb_otg_hs@0 at tisysc22 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@59000/smartreflex@0 at tisysc23 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@5b000/smartreflex@0 at tisysc24 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@5d000/smartreflex@0 at tisysc25 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@74000/mailbox@0 at tisysc26 not configured
+[   1.0000000] /ocp/interconnect@4a000000/segment@80000/target-module@76000/spinlock@0 at tisysc27 not configured
+[   1.0000000] omaptimer1 at tisysc28: couldn't enable module
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@34000/timer@0 at tisysc29 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@36000/timer@0 at tisysc30 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@3e000/timer@0 at tisysc31 not configured
+[   1.0000000] omaptimer2 at tisysc40: couldn't enable module
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@88000/timer@0 at tisysc41 not configured
+[   1.0000000] tirng0 at tisysc42: couldn't enable module
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@98000/spi@0 at tisysc44 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@9a000/spi@0 at tisysc45 not configured
+[   1.0000000] sdhc0 at simplebus24: couldn't enable module
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@a5000/des@0 at tisysc46 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@b2000/1w@0 at tisysc48 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@b8000/spi@0 at tisysc50 not configured
+[   1.0000000] /ocp/interconnect@48000000/segment@0/target-module@ba000/spi@0 at tisysc51 not configured
+[   1.0000000] sdhc1 at tisysc53: couldn't enable module
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@22000/mcbsp@0 at tisysc55 not configured
+[   1.0000000] tiwdt1 at tisysc59: couldn't enable hwmod
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@38000/timer@0 at tisysc60 not configured
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@3a000/timer@0 at tisysc61 not configured
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@3c000/timer@0 at tisysc62 not configured
+[   1.0000000] /ocp/interconnect@40100000/segment@0/target-module@3e000/timer@0 at tisysc63 not configured
+[   1.0000000] /ocp/gpmc@50000000 at simplebus1 not configured
+[   1.0000000] /ocp/target-module@55082000/mmu@0 at tisysc64 not configured
+[   1.0000000] /ocp/emif@4c000000 at simplebus1 not configured
+[   1.0000000] /ocp/emif@4d000000 at simplebus1 not configured
+[   1.0000000] /ocp/target-module@4b501000/aes@0 at tisysc65 not configured
+[   1.0000000] /ocp/target-module@4b701000/aes@0 at tisysc66 not configured
+[   1.0000000] /ocp/target-module@4b100000/sham@0 at tisysc67 not configured
+[   1.0000000] /ocp/regulator-abb-mpu at simplebus1 not configured
+[   1.0000000] gpioleds0 at simplebus0:
+[   1.0000000] gpiokeys0 at simplebus0: button S2
+[   1.0000000] /sound at simplebus0 not configured
+[   1.0000000] armpmu0 at simplebus0: Performance Monitor Unit
+[   1.0000000] /soc at simplebus0 not configured
+[   1.0000000] /ocp/dmm@4e000000 at simplebus1 not configured
+[   1.0000000] panic: cpu_initclocks: no timer registered
+[   1.0000000] cpu0: Begin traceback...
+[   1.0000000] 0x80cc9e54: netbsd:db_panic+0x14
+[   1.0000000] 0x80cc9e74: netbsd:vpanic+0x114
+[   1.0000000] 0x80cc9e8c: netbsd:panic+0x24
+[   1.0000000] 0x80cc9eac: netbsd:cpu_initclocks+0x38
+[   1.0000000] 0x80cc9f14: netbsd:initclocks+0x30
+[   1.0000000] 0x80cc9f9c: netbsd:main+0x34c
+[   1.0000000] 0x80cc9fac: netbsd:kernel_text+0x54
+[   1.0000000] cpu0: End traceback...
