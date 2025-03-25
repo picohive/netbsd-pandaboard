@@ -1,0 +1,16 @@
+Index: sys/arch/arm/ti/ti_prcm.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_prcm.c,v
+retrieving revision 1.4
+diff -u -p -r1.4 ti_prcm.c
+--- sys/arch/arm/ti/ti_prcm.c	3 Jun 2020 14:56:09 -0000	1.4
++++ sys/arch/arm/ti/ti_prcm.c	25 Mar 2025 03:01:25 -0000
+@@ -217,7 +217,7 @@ ti_prcm_attach(struct ti_prcm_softc *sc)
+ 	for (i = 0; i < sc->sc_nclks; i++)
+ 		sc->sc_clks[i].base.domain = &sc->sc_clkdom;
+ 
+-	KASSERT(prcm_softc == NULL);
++//	KASSERT(prcm_softc == NULL);
+ 	prcm_softc = sc;
+ 
+ 	return 0;

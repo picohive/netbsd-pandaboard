@@ -1,0 +1,68 @@
+Index: sys/arch/arm/ti/ti_dpll_clock.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_dpll_clock.c,v
+retrieving revision 1.6
+diff -u -p -r1.6 ti_dpll_clock.c
+--- sys/arch/arm/ti/ti_dpll_clock.c	27 Jan 2021 03:10:20 -0000	1.6
++++ sys/arch/arm/ti/ti_dpll_clock.c	25 Mar 2025 02:56:58 -0000
+@@ -41,6 +41,7 @@ __KERNEL_RCSID(0, "$NetBSD: ti_dpll_cloc
+ 
+ #define	DPLL_MULT		__BITS(18,8)
+ #define	DPLL_DIV		__BITS(6,0)
++#define DPLL_CLKOUT_DIV		__BITS(4,0)
+ 
+ #define	AM3_ST_MN_BYPASS	__BIT(8)
+ #define	AM3_ST_DPLL_CLK		__BIT(0)
+@@ -102,6 +103,16 @@ static const struct clk_funcs omap3_dpll
+ 	.get_parent = ti_dpll_clock_get_parent,
+ };
+ 
++static u_int	omap4_dpll_clock_get_rate(void *, struct clk *);
++
++static const struct clk_funcs omap4_dpll_clock_clk_funcs = {
++	.get = ti_dpll_clock_get,
++	.put = ti_dpll_clock_put,
++	.set_rate = am3_dpll_clock_set_rate,
++	.get_rate = omap4_dpll_clock_get_rate,
++	.get_parent = ti_dpll_clock_get_parent,
++};
++
+ static const struct device_compatible_entry compat_data[] = {
+ 	{ .compat = "ti,am3-dpll-clock",
+ 	  .data = &am3_dpll_clock_clk_funcs },
+@@ -109,6 +120,10 @@ static const struct device_compatible_en
+ 	  .data = &omap3_dpll_clock_clk_funcs },
+ 	{ .compat = "ti,omap3-dpll-core-clock",
+ 	  .data = &omap3_dpll_core_clock_clk_funcs },
++	{ .compat = "ti,omap4-dpll-clock",
++	  .data = &omap4_dpll_clock_clk_funcs },
++	{ .compat = "ti,omap4-dpll-core-clock",
++	  .data = &omap4_dpll_clock_clk_funcs },
+ 
+ 	DEVICE_COMPAT_EOL
+ };
+@@ -347,3 +362,24 @@ omap3_dpll_core_clock_get_rate(void *pri
+ 
+ 	return (u_int)((mult * parent_rate) / div) / postdiv;
+ }
++
++static u_int
++omap4_dpll_clock_get_rate(void *priv, struct clk *clk)
++{
++	struct ti_dpll_clock_softc * const sc = priv;
++	struct clk *clk_parent = clk_get_parent(clk);
++	uint32_t val;
++	uint64_t parent_rate;
++
++	if (clk_parent == NULL)
++		return 0;
++
++	val = RD4(sc, REG_MULT_DIV1);
++	const u_int mult = __SHIFTOUT(val, DPLL_MULT);
++	const u_int div = __SHIFTOUT(val, DPLL_DIV) + 1;
++	const u_int postdiv = __SHIFTOUT(val, DPLL_CLKOUT_DIV);
++
++	parent_rate = clk_get_rate(clk_parent);
++
++	return (u_int)((mult * parent_rate) / div) / postdiv;
++}

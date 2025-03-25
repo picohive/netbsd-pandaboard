@@ -1,0 +1,15 @@
+Index: sys/arch/arm/ti/ti_com.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_com.c,v
+retrieving revision 1.11.18.1
+diff -u -p -r1.11.18.1 ti_com.c
+--- sys/arch/arm/ti/ti_com.c	18 Oct 2023 11:49:09 -0000	1.11.18.1
++++ sys/arch/arm/ti/ti_com.c	25 Mar 2025 02:54:21 -0000
+@@ -50,6 +50,7 @@ static void ti_com_attach(device_t, devi
+ static const struct device_compatible_entry compat_data[] = {
+ 	{ .compat = "ti,am3352-uart" },
+ 	{ .compat = "ti,omap3-uart" },
++	{ .compat = "ti,omap4-uart" },
+ 	DEVICE_COMPAT_EOL
+ };
+ 

@@ -1,0 +1,15 @@
+Index: sys/arch/arm/ti/ti_div_clock.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_div_clock.c,v
+retrieving revision 1.2
+diff -u -p -r1.2 ti_div_clock.c
+--- sys/arch/arm/ti/ti_div_clock.c	27 Jan 2021 03:10:20 -0000	1.2
++++ sys/arch/arm/ti/ti_div_clock.c	25 Mar 2025 02:55:14 -0000
+@@ -40,6 +40,7 @@ __KERNEL_RCSID(0, "$NetBSD: ti_div_clock
+ #include <dev/fdt/fdtvar.h>
+ 
+ static const struct device_compatible_entry compat_data[] = {
++	{ .compat = "ti,composite-divider-clock" },
+ 	{ .compat = "ti,divider-clock" },
+ 	DEVICE_COMPAT_EOL
+ };
