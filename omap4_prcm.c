@@ -171,7 +171,7 @@ static struct ti_prcm_clk omap4_cm1_clks[] = {
 	OMAP4_PRCM_HWMOD_CM1_ABE("timer6", 0x70, "FIXED_24MHZ"),
 	OMAP4_PRCM_HWMOD_CM1_ABE("timer7", 0x78, "FIXED_24MHZ"),
 	OMAP4_PRCM_HWMOD_CM1_ABE("timer8", 0x80, "FIXED_24MHZ"),
-	OMAP4_PRCM_HWMOD_CM1_ABE("wd_timer3", 0x88, "FIXED_32K"),
+//	OMAP4_PRCM_HWMOD_CM1_ABE("wd_timer3", 0x88, "FIXED_32K"),
 };
 
 static struct ti_prcm_clk omap4_cm2_clks[] = {
@@ -214,6 +214,8 @@ static struct ti_prcm_clk omap4_cm2_clks[] = {
 
 	OMAP4_PRCM_HWMOD_CM2_L3INIT("usb_host_hs", 0x58, "PERIPH_CLK"),
 	OMAP4_PRCM_HWMOD_CM2_L3INIT_AUTO("usb_tll_hs", 0x68, "PERIPH_CLK"),
+
+//	OMAP4_PRCM_HWMOD_CM2_L4PER_AUTO("rng", 0x1c0, "PERIPH_CLK"),
 };
 
 static struct ti_prcm_clk omap4_prm_clks[] = {
@@ -326,7 +328,7 @@ omap4_prcm_attach(device_t parent, device_t self, void *aux)
 		return;
 
 	aprint_naive("\n");
-	aprint_normal(": OMAP4xxx PRCM (%s)\n", iname);
+	aprint_normal(": OMAP44xx PRCM (%s)\n", iname);
 
 	for (child = OF_child(phandle); child; child = OF_peer(child)) {
 		if (of_compatible_match(child, cm_compat_data) == 0)

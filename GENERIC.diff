@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/evbarm/conf/GENERIC,v
 retrieving revision 1.115.2.1
 diff -u -p -r1.115.2.1 GENERIC
 --- sys/arch/evbarm/conf/GENERIC	28 May 2023 10:14:36 -0000	1.115.2.1
-+++ sys/arch/evbarm/conf/GENERIC	25 Mar 2025 02:31:03 -0000
++++ sys/arch/evbarm/conf/GENERIC	29 Mar 2025 13:04:28 -0000
 @@ -20,6 +20,7 @@ options 	SOC_IMX6SX
  options 	SOC_IMX7D
  options 	SOC_MESON8B
@@ -45,15 +45,6 @@ diff -u -p -r1.115.2.1 GENERIC
  timuxclk* 	at fdt? pass 1		# TI mux clock
  zynqclk*	at fdt? pass 1		# Xilinx Zynq PS clocks
  
-@@ -210,7 +215,7 @@ dwcwdt* 	at fdt?			# DesignWare watchdog
- imxwdog*	at fdt?			# NXP i.MX watchdog
- mesonwdt* 	at fdt?			# Amlogic Meson watchdog
- sunxiwdt* 	at fdt?			# Allwinner watchdog
--tiwdt* 		at fdt?			# TI OMAP watchdog
-+#tiwdt* 		at fdt?			# TI OMAP watchdog
- 
- # Interrupt controller
- gic* 		at fdt? pass 1		# ARM GIC
 @@ -220,6 +225,7 @@ exyointr* 	at fdt? pass 1		# Samsung Exy
  imxgpc* 	at fdt? pass 2		# i.MX General Power Controller INTC
  imx7gpc* 	at fdt? pass 2		# i.MX General Power Controller v2 INTC
