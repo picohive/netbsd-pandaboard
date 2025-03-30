@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/evbarm/conf/GENERIC,v
 retrieving revision 1.115.2.1
 diff -u -p -r1.115.2.1 GENERIC
 --- sys/arch/evbarm/conf/GENERIC	28 May 2023 10:14:36 -0000	1.115.2.1
-+++ sys/arch/evbarm/conf/GENERIC	29 Mar 2025 13:04:28 -0000
++++ sys/arch/evbarm/conf/GENERIC	30 Mar 2025 09:40:50 -0000
 @@ -20,6 +20,7 @@ options 	SOC_IMX6SX
  options 	SOC_IMX7D
  options 	SOC_MESON8B
@@ -53,12 +53,3 @@ diff -u -p -r1.115.2.1 GENERIC
  tegralic* 	at fdt? pass 1		# NVIDIA Tegra LIC
  sunxiintc* 	at fdt? pass 1		# Allwinner INTC
  sunxinmi* 	at fdt? pass 2		# Allwinner NMI / R_INTC
-@@ -253,7 +259,7 @@ imxgpc*		at fdt? pass 2
- tegrapmc* 	at fdt? pass 4		# NVIDIA Tegra PMC
- 
- # Performance monitors
--armpmu* 	at fdt?
-+#armpmu* 	at fdt?
- pseudo-device 	tprof
- 
- # Clock and Reset controller
