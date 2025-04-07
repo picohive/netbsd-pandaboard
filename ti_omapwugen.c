@@ -59,7 +59,7 @@ omapwugen_fdt_establish(device_t dev, u_int *specifier, int ipl, int flags,
 
 	const int ihandle = fdtbus_intr_parent(sc->sc_phandle);
 	if (ihandle == -1) {
-		return false;
+		return NULL;
 	}
 
 	return fdtbus_intr_establish_raw(ihandle, specifier, ipl,
