@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/arm/cortex/pl310.c,v
 retrieving revision 1.20
 diff -u -p -r1.20 pl310.c
 --- sys/arch/arm/cortex/pl310.c	2 Oct 2021 20:52:09 -0000	1.20
-+++ sys/arch/arm/cortex/pl310.c	25 Mar 2025 02:32:33 -0000
++++ sys/arch/arm/cortex/pl310.c	7 Apr 2025 02:04:31 -0000
 @@ -38,17 +38,30 @@ __KERNEL_RCSID(0, "$NetBSD: pl310.c,v 1.
  #include <sys/device.h>
  #include <sys/atomic.h>
@@ -44,15 +44,18 @@ diff -u -p -r1.20 pl310.c
  };
  
  __CTASSERT(offsetof(struct arml2cc_softc, sc_ev_inv.ev_count) % 8 == 0);
-@@ -147,6 +161,7 @@ arml2cc_attach(device_t parent, device_t
+@@ -147,6 +161,10 @@ arml2cc_attach(device_t parent, device_t
  	sc->sc_dev = self;
  	sc->sc_memt = mpcaa->mpcaa_memt;
  	sc->sc_waymask = __BIT(arm_scache.dcache_ways) - 1;
-+	sc->sc_smc = of_compatible_lookup(OF_finddevice("/"), compat_data)->value;
++	const struct device_compatible_entry *dce =
++	    of_compatible_lookup(OF_finddevice("/"), compat_data);
++	if (dce != NULL)
++		sc->sc_smc = dce->value;
  
  	evcnt_attach_dynamic(&sc->sc_ev_inv, EVCNT_TYPE_MISC, NULL,
  	    xname, "L2 inv requests");
-@@ -240,7 +255,14 @@ arml2cc_disable(struct arml2cc_softc *sc
+@@ -240,7 +258,14 @@ arml2cc_disable(struct arml2cc_softc *sc
  	arml2cc_cache_way_op(sc, L2C_CLEAN_INV_WAY, sc->sc_waymask);
  	arml2cc_cache_sync(sc);
  
@@ -68,7 +71,7 @@ diff -u -p -r1.20 pl310.c
  	mutex_spin_exit(&sc->sc_lock);
  }
  
-@@ -252,7 +274,13 @@ arml2cc_enable(struct arml2cc_softc *sc)
+@@ -252,7 +277,13 @@ arml2cc_enable(struct arml2cc_softc *sc)
  	arml2cc_cache_way_op(sc, L2C_INV_WAY, sc->sc_waymask);
  	arml2cc_cache_sync(sc);
  
