@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/arm/ti/omap3_platform.c,v
 retrieving revision 1.7
 diff -u -p -r1.7 omap3_platform.c
 --- sys/arch/arm/ti/omap3_platform.c	24 Apr 2021 23:36:29 -0000	1.7
-+++ sys/arch/arm/ti/omap3_platform.c	25 Mar 2025 02:44:39 -0000
++++ sys/arch/arm/ti/omap3_platform.c	7 Apr 2025 01:38:50 -0000
 @@ -29,6 +29,8 @@
  #include "opt_soc.h"
  #include "opt_console.h"
@@ -129,7 +129,7 @@ diff -u -p -r1.7 omap3_platform.c
  static void
  omap3_platform_init_attach_args(struct fdt_attach_args *faa)
  {
-@@ -143,11 +224,37 @@ omap3_platform_early_putchar(char c)
+@@ -143,6 +224,23 @@ omap3_platform_early_putchar(char c)
  #endif
  }
  
@@ -153,21 +153,7 @@ diff -u -p -r1.7 omap3_platform.c
  static void
  omap3_platform_device_register(device_t self, void *aux)
  {
- }
- 
-+static void
-+omap4_platform_device_register(device_t self, void *aux)
-+{
-+	prop_dictionary_t prop = device_properties(self);
-+
-+	if (device_is_a(self, "a9ptmr"))
-+		prop_dictionary_set_uint32(prop, "frequency", curcpu()->ci_data.cpu_cc_freq / 2);
-+}
-+
- static u_int
- omap3_platform_uart_freq(void)
- {
-@@ -155,12 +262,50 @@ omap3_platform_uart_freq(void)
+@@ -155,12 +253,50 @@ omap3_platform_uart_freq(void)
  }
  
  static void
@@ -220,24 +206,12 @@ diff -u -p -r1.7 omap3_platform.c
  
  	for (;;)
  		__asm("wfi");
-@@ -170,7 +315,7 @@ static void
+@@ -170,7 +306,26 @@ static void
  omap3_platform_delay(u_int n)
  {
  	volatile uint32_t *cr =
 -	    (volatile uint32_t *)omap3_phystovirt(REG_32KSYNCNT_CR);
 +	    (volatile uint32_t *)omap3_phystovirt(OMAP3_REG_32KSYNCNT_CR);
- 	uint32_t cur, prev;
- 
- 	long ticks = howmany(n * 32768, 1000000);
-@@ -185,6 +330,88 @@ omap3_platform_delay(u_int n)
- 	}
- }
- 
-+static void
-+omap4_platform_delay(u_int n)
-+{
-+	volatile uint32_t *cr =
-+	    (volatile uint32_t *)omap4_phystovirt(OMAP4_REG_32KSYNCNT_CR);
 +	uint32_t cur, prev;
 +
 +	long ticks = howmany(n * 32768, 1000000);
@@ -252,6 +226,18 @@ diff -u -p -r1.7 omap3_platform.c
 +	}
 +}
 +
++static void
++omap4_platform_delay(u_int n)
++{
++	volatile uint32_t *cr =
++	    (volatile uint32_t *)omap4_phystovirt(OMAP4_REG_32KSYNCNT_CR);
+ 	uint32_t cur, prev;
+ 
+ 	long ticks = howmany(n * 32768, 1000000);
+@@ -185,6 +340,69 @@ omap3_platform_delay(u_int n)
+ 	}
+ }
+ 
 +#ifdef MULTIPROCESSOR
 +static int
 +omap4_platform_mpstart(void)
@@ -318,7 +304,7 @@ diff -u -p -r1.7 omap3_platform.c
  static const struct arm_platform omap3_platform = {
  	.ap_devmap = omap3_platform_devmap,
  	.ap_bootstrap = arm_fdt_cpu_bootstrap,
-@@ -196,3 +423,18 @@ static const struct arm_platform omap3_p
+@@ -196,3 +414,18 @@ static const struct arm_platform omap3_p
  };
  
  ARM_PLATFORM(omap3, "ti,omap3", &omap3_platform);
@@ -327,7 +313,7 @@ diff -u -p -r1.7 omap3_platform.c
 +	.ap_devmap = omap4_platform_devmap,
 +	.ap_bootstrap = omap4_platform_bootstrap,
 +	.ap_init_attach_args = omap3_platform_init_attach_args,
-+	.ap_device_register = omap4_platform_device_register,
++	.ap_device_register = omap3_platform_device_register,
 +	.ap_reset = omap4_platform_reset,
 +	.ap_delay = omap4_platform_delay,
 +	.ap_uart_freq = omap3_platform_uart_freq,
