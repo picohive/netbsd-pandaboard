@@ -15,7 +15,7 @@
 * /usr/src/sys/dev/fdt/fixedfactorclock.c
 
 ### Boot log
-https://dmesgd.nycbug.org/dmesgd?do=view&id=8298
+https://dmesgd.nycbug.org/index.cgi?do=view&id=8308
 
 ### Build kernel
 ./build.sh -U -u -O /usr/builds/obj.earmv7hf -T /usr/builds/tool.earmv7hf -j2 -m evbarm -a earmv7hf kernel=GENERIC
