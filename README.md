@@ -13,12 +13,15 @@
 * /usr/src/sys/arch/arm/ti/ti_prcm.c
 * /usr/src/sys/arch/evbarm/conf/GENERIC
 * /usr/src/sys/dev/fdt/fixedfactorclock.c
+* /usr/src/sys/dtb/arm/Makefile
 
 ### Boot log
 https://dmesgd.nycbug.org/index.cgi?do=view&id=8308
 
-### Build kernel
+### Build kernel and dtb
 ./build.sh -U -u -O /usr/builds/obj.earmv7hf -T /usr/builds/tool.earmv7hf -j2 -m evbarm -a earmv7hf kernel=GENERIC
+
+./build.sh -U -u -O /usr/builds/obj.earmv7hf -T /usr/builds/tool.earmv7hf -j2 -m evbarm -a earmv7hf dtb
 
 ### Write image
 dd if=armv7.img of=/dev/rld0d bs=1m conv=sync

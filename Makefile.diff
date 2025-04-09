@@ -1,0 +1,15 @@
+Index: sys/dtb/arm/Makefile
+===================================================================
+RCS file: /cvsroot/src/sys/dtb/arm/Makefile,v
+retrieving revision 1.5.4.1
+diff -u -p -r1.5.4.1 Makefile
+--- sys/dtb/arm/Makefile	28 May 2023 10:14:36 -0000	1.5.4.1
++++ sys/dtb/arm/Makefile	9 Apr 2025 08:55:55 -0000
+@@ -16,6 +16,7 @@ DTSMAKEVARS=	CONFIG_SOC_AM33XX=y		\
+ 		CONFIG_SOC_IMX7D=y		\
+ 		CONFIG_MACH_MESON8=y		\
+ 		CONFIG_ARCH_OMAP3=y		\
++		CONFIG_ARCH_OMAP4=y		\
+ 		CONFIG_ARCH_INTEL_SOCFPGA=y	\
+ 		CONFIG_ARCH_ROCKCHIP=y		\
+ 		CONFIG_MACH_SUN4I=y		\
