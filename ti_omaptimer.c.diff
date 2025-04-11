@@ -1,0 +1,36 @@
+Index: sys/arch/arm/ti/ti_omaptimer.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_omaptimer.c,v
+retrieving revision 1.11
+diff -u -p -r1.11 ti_omaptimer.c
+--- sys/arch/arm/ti/ti_omaptimer.c	7 Nov 2021 17:12:45 -0000	1.11
++++ sys/arch/arm/ti/ti_omaptimer.c	11 Apr 2025 01:05:25 -0000
+@@ -46,6 +46,7 @@ __KERNEL_RCSID(0, "$NetBSD: ti_omaptimer
+ enum omaptimer_type {
+ 	DM_TIMER_AM335X,
+ 	DM_TIMER_OMAP3430,
++	DM_TIMER_OMAP4430,
+ 	_DM_NTIMER
+ };
+ 
+@@ -85,12 +86,20 @@ static uint8_t omaptimer_regmap[_DM_NTIM
+ 		[TIMER_TCRR]	= 0x28,
+ 		[TIMER_TLDR]	= 0x2c,
+ 	},
++	[DM_TIMER_OMAP4430] = {
++		[TIMER_TISR]	= 0x18,
++		[TIMER_TIER]	= 0x1c,
++		[TIMER_TCLR] 	= 0x38,
++		[TIMER_TCRR]	= 0x3c,
++		[TIMER_TLDR]	= 0x40,
++	},
+ };
+ 
+ static const struct device_compatible_entry compat_data[] = {
+ 	{ .compat = "ti,am335x-timer-1ms",	.value = DM_TIMER_AM335X },
+ 	{ .compat = "ti,am335x-timer",		.value = DM_TIMER_AM335X },
+ 	{ .compat = "ti,omap3430-timer",	.value = DM_TIMER_OMAP3430 },
++	{ .compat = "ti,omap4430-timer",	.value = DM_TIMER_OMAP4430 },
+ 	DEVICE_COMPAT_EOL
+ };
+ 
