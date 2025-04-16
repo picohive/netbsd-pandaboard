@@ -213,6 +213,7 @@ static struct ti_prcm_clk omap4_cm2_clks[] = {
 	OMAP4_PRCM_HWMOD_CM2_L4PER("mmc5", 0x160, "PERIPH_CLK"),
 
 	OMAP4_PRCM_HWMOD_CM2_L3INIT("usb_host_hs", 0x58, "PERIPH_CLK"),
+	OMAP4_PRCM_HWMOD_CM2_L3INIT_AUTO("usb_otg_hs", 0x60, "PERIPH_CLK"),
 	OMAP4_PRCM_HWMOD_CM2_L3INIT_AUTO("usb_tll_hs", 0x68, "PERIPH_CLK"),
 
 //	OMAP4_PRCM_HWMOD_CM2_L4PER_AUTO("rng", 0x1c0, "PERIPH_CLK"),
