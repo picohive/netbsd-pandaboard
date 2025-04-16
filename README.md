@@ -9,6 +9,7 @@
 * /usr/src/sys/arch/arm/ti/ti_div_clock.c
 * /usr/src/sys/arch/arm/ti/ti_dpll_clock.c
 * /usr/src/sys/arch/arm/ti/ti_gate_clock.c
+* /usr/src/sys/arch/arm/ti/ti_omapmusb.c
 * /usr/src/sys/arch/arm/ti/ti_omaptimer.c
 * /usr/src/sys/arch/arm/ti/ti_omapwugen.c
 * /usr/src/sys/arch/arm/ti/ti_prcm.c
