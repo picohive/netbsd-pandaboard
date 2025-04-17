@@ -51,7 +51,6 @@ static const struct fdtbus_clock_controller_func ti_gate_clock_fdt_funcs = {
 
 static struct clk *ti_gate_clock_get(void *, const char *);
 static void ti_gate_clock_put(void *, struct clk *);
-static u_int ti_gate_clock_get_rate(void *, struct clk *);
 static int ti_gate_clock_enable(void *, struct clk *);
 static int ti_gate_clock_disable(void *, struct clk *);
 static struct clk *ti_gate_clock_get_parent(void *, struct clk *);
@@ -59,7 +58,6 @@ static struct clk *ti_gate_clock_get_parent(void *, struct clk *);
 static const struct clk_funcs ti_gate_clock_clk_funcs = {
 	.get = ti_gate_clock_get,
 	.put = ti_gate_clock_put,
-	.get_rate = ti_gate_clock_get_rate,
 	.enable = ti_gate_clock_enable,
 	.disable = ti_gate_clock_disable,
 	.get_parent = ti_gate_clock_get_parent,
@@ -164,19 +162,8 @@ ti_gate_clock_put(void *priv, struct clk *clk)
 {
 }
 
-static u_int
-ti_gate_clock_get_rate(void *priv, struct clk *clk)
-{
-	struct clk *clk_parent = clk_get_parent(clk);
-
-	if (clk_parent == NULL)
-		return 0;
-
-	return clk_get_rate(clk_parent);
-}
-
 static int
-ti_gate_clock_enable(void *priv, struct clk *clkp)
+ti_gate_clock_enable(void *priv, struct clk *clk)
 {
 	struct ti_gate_clock_softc * const sc = priv;
 	uint32_t val;
@@ -189,7 +176,7 @@ ti_gate_clock_enable(void *priv, struct clk *clkp)
 }
 
 static int
-ti_gate_clock_disable(void *priv, struct clk *clkp)
+ti_gate_clock_disable(void *priv, struct clk *clk)
 {
 	struct ti_gate_clock_softc * const sc = priv;
 	uint32_t val;
