@@ -146,6 +146,7 @@ static const struct device_compatible_entry compat_data[] = {
 	{ .compat = "ti,omap4-cm1",	.value = PRCM_CM1 },
 	{ .compat = "ti,omap4-cm2",	.value = PRCM_CM2 },
 	{ .compat = "ti,omap4-prm",	.value = PRCM_PRM },
+	{ .compat = "ti,omap4-scrm",	.value = PRCM_PRM },
 	DEVICE_COMPAT_EOL
 };
 

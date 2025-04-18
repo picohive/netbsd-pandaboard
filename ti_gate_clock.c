@@ -166,26 +166,28 @@ static int
 ti_gate_clock_enable(void *priv, struct clk *clk)
 {
 	struct ti_gate_clock_softc * const sc = priv;
+	struct clk *clk_parent = clk_get_parent(clk);
 	uint32_t val;
 
 	val = RD4(sc, 0);
 	val |= __BIT(sc->sc_shift);
 	WR4(sc, 0, val);
 
-	return 0;
+	return clk_enable(clk_parent);
 }
 
 static int
 ti_gate_clock_disable(void *priv, struct clk *clk)
 {
 	struct ti_gate_clock_softc * const sc = priv;
+	struct clk *clk_parent = clk_get_parent(clk);
 	uint32_t val;
 
 	val = RD4(sc, 0);
 	val &= ~__BIT(sc->sc_shift);
 	WR4(sc, 0, val);
 
-	return 0;
+	return clk_disable(clk_parent);
 }
 
 static struct clk *

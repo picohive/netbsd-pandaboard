@@ -6,6 +6,7 @@
 * /usr/src/sys/arch/arm/ti/omap_smc.S
 * /usr/src/sys/arch/arm/ti/smc.h
 * /usr/src/sys/arch/arm/ti/ti_com.c
+* /usr/src/sys/arch/arm/ti/ti_comp_clock.c
 * /usr/src/sys/arch/arm/ti/ti_div_clock.c
 * /usr/src/sys/arch/arm/ti/ti_dpll_clock.c
 * /usr/src/sys/arch/arm/ti/ti_gate_clock.c

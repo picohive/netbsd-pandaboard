@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/arm/ti/ti_dpll_clock.c,v
 retrieving revision 1.6
 diff -u -p -r1.6 ti_dpll_clock.c
 --- sys/arch/arm/ti/ti_dpll_clock.c	27 Jan 2021 03:10:20 -0000	1.6
-+++ sys/arch/arm/ti/ti_dpll_clock.c	25 Mar 2025 02:56:58 -0000
++++ sys/arch/arm/ti/ti_dpll_clock.c	18 Apr 2025 14:07:38 -0000
 @@ -41,6 +41,7 @@ __KERNEL_RCSID(0, "$NetBSD: ti_dpll_cloc
  
  #define	DPLL_MULT		__BITS(18,8)
@@ -13,7 +13,7 @@ diff -u -p -r1.6 ti_dpll_clock.c
  
  #define	AM3_ST_MN_BYPASS	__BIT(8)
  #define	AM3_ST_DPLL_CLK		__BIT(0)
-@@ -102,6 +103,16 @@ static const struct clk_funcs omap3_dpll
+@@ -102,6 +103,22 @@ static const struct clk_funcs omap3_dpll
  	.get_parent = ti_dpll_clock_get_parent,
  };
  
@@ -27,10 +27,16 @@ diff -u -p -r1.6 ti_dpll_clock.c
 +	.get_parent = ti_dpll_clock_get_parent,
 +};
 +
++static const struct clk_funcs omap4_dpll_x2_clock_clk_funcs = {
++	.get = ti_dpll_clock_get,
++	.put = ti_dpll_clock_put,
++	.get_parent = ti_dpll_clock_get_parent,
++};
++
  static const struct device_compatible_entry compat_data[] = {
  	{ .compat = "ti,am3-dpll-clock",
  	  .data = &am3_dpll_clock_clk_funcs },
-@@ -109,6 +120,10 @@ static const struct device_compatible_en
+@@ -109,6 +126,14 @@ static const struct device_compatible_en
  	  .data = &omap3_dpll_clock_clk_funcs },
  	{ .compat = "ti,omap3-dpll-core-clock",
  	  .data = &omap3_dpll_core_clock_clk_funcs },
@@ -38,10 +44,45 @@ diff -u -p -r1.6 ti_dpll_clock.c
 +	  .data = &omap4_dpll_clock_clk_funcs },
 +	{ .compat = "ti,omap4-dpll-core-clock",
 +	  .data = &omap4_dpll_clock_clk_funcs },
++	{ .compat = "ti,omap4-dpll-m4xen-clock",
++	  .data = &omap4_dpll_clock_clk_funcs },
++	{ .compat = "ti,omap4-dpll-x2-clock",
++	  .data = &omap4_dpll_x2_clock_clk_funcs },
  
  	DEVICE_COMPAT_EOL
  };
-@@ -347,3 +362,24 @@ omap3_dpll_core_clock_get_rate(void *pri
+@@ -162,6 +187,9 @@ ti_dpll_clock_attach(device_t parent, de
+ 		return;
+ 	}
+ 
++	clkfuncs = of_compatible_lookup(phandle, compat_data)->data;
++	if (clkfuncs == &omap4_dpll_x2_clock_clk_funcs)
++		goto skip;
+ 	for (n = 0; n < NREG; n++) {
+ 		if (fdtbus_get_reg(phandle, n, &addr[n], NULL) != 0) {
+ 			aprint_error(": couldn't get registers\n");
+@@ -169,8 +197,6 @@ ti_dpll_clock_attach(device_t parent, de
+ 		}
+ 	}
+ 
+-	sc->sc_dev = self;
+-	sc->sc_phandle = phandle;
+ 	sc->sc_bst = faa->faa_bst;
+ 	for (n = 0; n < NREG; n++) {
+ 		if (bus_space_map(sc->sc_bst, base_addr + addr[n], 4, 0, &sc->sc_bsh[n]) != 0) {
+@@ -178,8 +204,9 @@ ti_dpll_clock_attach(device_t parent, de
+ 			return;
+ 		}
+ 	}
+-
+-	clkfuncs = of_compatible_lookup(phandle, compat_data)->data;
++skip:
++	sc->sc_dev = self;
++	sc->sc_phandle = phandle;
+ 
+ 	sc->sc_clkdom.name = device_xname(self);
+ 	sc->sc_clkdom.funcs = clkfuncs;
+@@ -347,3 +374,24 @@ omap3_dpll_core_clock_get_rate(void *pri
  
  	return (u_int)((mult * parent_rate) / div) / postdiv;
  }

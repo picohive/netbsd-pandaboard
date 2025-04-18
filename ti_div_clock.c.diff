@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/arm/ti/ti_div_clock.c,v
 retrieving revision 1.2
 diff -u -p -r1.2 ti_div_clock.c
 --- sys/arch/arm/ti/ti_div_clock.c	27 Jan 2021 03:10:20 -0000	1.2
-+++ sys/arch/arm/ti/ti_div_clock.c	25 Mar 2025 02:55:14 -0000
++++ sys/arch/arm/ti/ti_div_clock.c	18 Apr 2025 14:01:12 -0000
 @@ -40,6 +40,7 @@ __KERNEL_RCSID(0, "$NetBSD: ti_div_clock
  #include <dev/fdt/fdtvar.h>
  
@@ -13,3 +13,33 @@ diff -u -p -r1.2 ti_div_clock.c
  	{ .compat = "ti,divider-clock" },
  	DEVICE_COMPAT_EOL
  };
+@@ -55,12 +56,14 @@ static const struct fdtbus_clock_control
+ 
+ static struct clk *ti_div_clock_get(void *, const char *);
+ static void	ti_div_clock_put(void *, struct clk *);
++static int	ti_div_clock_enable(void *, struct clk *);
+ static u_int	ti_div_clock_get_rate(void *, struct clk *);
+ static struct clk *ti_div_clock_get_parent(void *, struct clk *);
+ 
+ static const struct clk_funcs ti_div_clock_clk_funcs = {
+ 	.get = ti_div_clock_get,
+ 	.put = ti_div_clock_put,
++	.enable = ti_div_clock_enable,
+ 	.get_rate = ti_div_clock_get_rate,
+ 	.get_parent = ti_div_clock_get_parent,
+ };
+@@ -150,6 +153,14 @@ ti_div_clock_put(void *priv, struct clk 
+ {
+ }
+ 
++static int
++ti_div_clock_enable(void *priv, struct clk *clk)
++{
++	struct clk *clk_parent = clk_get_parent(clk);
++
++	return clk_enable(clk_parent);
++}
++
+ static u_int
+ ti_div_clock_get_rate(void *priv, struct clk *clk)
+ {

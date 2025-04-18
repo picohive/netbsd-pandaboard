@@ -4,7 +4,7 @@ RCS file: /cvsroot/src/sys/arch/arm/ti/files.ti,v
 retrieving revision 1.22
 diff -u -p -r1.22 files.ti
 --- sys/arch/arm/ti/files.ti	20 Jul 2022 10:01:11 -0000	1.22
-+++ sys/arch/arm/ti/files.ti	16 Apr 2025 05:06:30 -0000
++++ sys/arch/arm/ti/files.ti	18 Apr 2025 13:58:58 -0000
 @@ -3,13 +3,19 @@
  
  file	arch/arm/ti/ti_cpufreq.c	soc_ti
@@ -38,7 +38,7 @@ diff -u -p -r1.22 files.ti
  # Clocks
  device	timuxclk
  attach	timuxclk at fdt with ti_mux_clock
-@@ -47,6 +58,10 @@ device	tidpllclk
+@@ -47,6 +58,14 @@ device	tidpllclk
  attach	tidpllclk at fdt with ti_dpll_clock
  file	arch/arm/ti/ti_dpll_clock.c	ti_dpll_clock
  
@@ -46,10 +46,14 @@ diff -u -p -r1.22 files.ti
 +attach	tigateclk at fdt with ti_gate_clock
 +file	arch/arm/ti/ti_gate_clock.c	ti_gate_clock
 +
++device	ticompclk
++attach	ticompclk at fdt with ti_comp_clock
++file	arch/arm/ti/ti_comp_clock.c	ti_comp_clock
++
  # UART
  attach	com at fdt with ti_com: ti_prcm
  file	arch/arm/ti/ti_com.c		ti_com needs-flag
-@@ -102,6 +117,9 @@ file	arch/arm/ti/ti_ehci.c		ti_ehci
+@@ -102,6 +121,9 @@ file	arch/arm/ti/ti_ehci.c		ti_ehci
  attach	motg at fdt with ti_motg
  file	arch/arm/ti/ti_motg.c		ti_motg
  
@@ -59,7 +63,7 @@ diff -u -p -r1.22 files.ti
  # RNG
  device	tirng
  attach	tirng at fdt with ti_rng
-@@ -142,3 +160,4 @@ file	arch/arm/ti/ti_wdt.c		ti_wdt
+@@ -142,3 +164,4 @@ file	arch/arm/ti/ti_wdt.c		ti_wdt
  defflag	opt_soc.h			SOC_TI
  defflag	opt_soc.h			SOC_AM33XX: SOC_TI
  defflag	opt_soc.h			SOC_OMAP3: SOC_TI
