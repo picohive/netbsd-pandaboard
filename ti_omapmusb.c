@@ -56,10 +56,10 @@ __KERNEL_RCSID(0, "$NetBSD$");
 #define	OTG_SYSSTATUS	0x408
 #define	 OTG_SYSSTATUS_RESETDONE	__BIT(0)
 
-#define	MODE_FORCE	0x0
-#define	MODE_NO		0x1
-#define	MODE_SMART	0x2
-#define	MODE_SMART_WKUP	0x3
+#define	IDLEMODE_FORCE		0x0
+#define	IDLEMODE_NO		0x1
+#define	IDLEMODE_SMART		0x2
+#define	IDLEMODE_SMART_WKUP	0x3
 
 static const struct device_compatible_entry compat_data[] = {
 	{ .compat = "ti,omap4-musb" },
@@ -147,8 +147,8 @@ omapmusb_init(struct motg_softc *sc)
 
 	omapmusb_reset(sc);
 
-	val = __SHIFTIN(MODE_SMART, OTG_SYSCONFIG_MIDLEMODE) |
-	      __SHIFTIN(MODE_SMART, OTG_SYSCONFIG_SIDLEMODE) |
+	val = __SHIFTIN(IDLEMODE_SMART, OTG_SYSCONFIG_MIDLEMODE) |
+	      __SHIFTIN(IDLEMODE_SMART, OTG_SYSCONFIG_SIDLEMODE) |
 	      OTG_SYSCONFIG_AUTOIDLE;
 	WR4(sc, OTG_SYSCONFIG, val);
 
