@@ -48,20 +48,18 @@ __KERNEL_RCSID(0, "$NetBSD$");
 
 #define	OTG_SYSCONFIG	0x404
 #define	 OTG_SYSCONFIG_MIDLEMODE	__BITS(13,12)
-#define	  MIDLEMODE_STANDBY_FORCE	0x0
-#define	  MIDLEMODE_STANDBY_NO		0x1
-#define	  MIDLEMODE_STANDBY_SMART	0x2
 #define	 OTG_SYSCONFIG_SIDLEMODE	__BITS(4,3)
-#define	  SIDLEMODE_IDLE_FORCE		0x0
-#define	  SIDLEMODE_IDLE_NO		0x1
-#define	  SIDLEMODE_IDLE_SMART		0x2
-#define	  SIDLEMODE_IDLE_WAKEUP		0x3
 #define	 OTG_SYSCONFIG_ENAWAKEUP	__BIT(2)
 #define	 OTG_SYSCONFIG_SOFTRESET	__BIT(1)
 #define	 OTG_SYSCONFIG_AUTOIDLE		__BIT(0)
 
 #define	OTG_SYSSTATUS	0x408
 #define	 OTG_SYSSTATUS_RESETDONE	__BIT(0)
+
+#define	MODE_FORCE	0x0
+#define	MODE_NO		0x1
+#define	MODE_SMART	0x2
+#define	MODE_SMART_WKUP	0x3
 
 static const struct device_compatible_entry compat_data[] = {
 	{ .compat = "ti,omap4-musb" },
@@ -149,8 +147,8 @@ omapmusb_init(struct motg_softc *sc)
 
 	omapmusb_reset(sc);
 
-	val = __SHIFTIN(MIDLEMODE_STANDBY_SMART, OTG_SYSCONFIG_MIDLEMODE) |
-	      __SHIFTIN(SIDLEMODE_IDLE_SMART, OTG_SYSCONFIG_SIDLEMODE) |
+	val = __SHIFTIN(MODE_SMART, OTG_SYSCONFIG_MIDLEMODE) |
+	      __SHIFTIN(MODE_SMART, OTG_SYSCONFIG_SIDLEMODE) |
 	      OTG_SYSCONFIG_AUTOIDLE;
 	WR4(sc, OTG_SYSCONFIG, val);
 
