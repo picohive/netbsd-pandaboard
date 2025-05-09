@@ -31,9 +31,9 @@ https://dmesgd.nycbug.org/index.cgi?do=view&id=8309
 dd if=armv7.img of=/dev/rld0d bs=1m conv=sync
 
 ### U-Boot
-cd /usr/pkgsrc/sysutils/u-boot-pandaboard ; make install
+cd /usr/pkgsrc/wip/u-boot-omap4-panda ; make install
 
 mount /dev/rld0e /mnt
 
-cd /usr/pkg/share/u-boot/pandaboard ; cp MLO u-boot.img /mnt
+cd /usr/pkg/share/u-boot/omap4-panda ; cp MLO u-boot.img /mnt
 
