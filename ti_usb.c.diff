@@ -1,0 +1,39 @@
+Index: ti_usb.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/ti/ti_usb.c,v
+retrieving revision 1.2
+diff -u -p -r1.2 ti_usb.c
+--- ti_usb.c	27 Jan 2021 03:10:20 -0000	1.2
++++ ti_usb.c	13 Sep 2025 08:46:34 -0000
+@@ -84,6 +84,7 @@ enum {
+ 	TI_USB_NBITS
+ };
+ 
++#ifndef OMAP4_PANDA
+ static const uint32_t ti_usb_portbits[TI_USB_NPORTS][TI_USB_NBITS] = {
+ 	[0] = {
+ 		[CONNECT_STATUS] = UHH_HOSTCONFIG_P1_CONNECT_STATUS,
+@@ -98,6 +99,7 @@ static const uint32_t ti_usb_portbits[TI
+ 		[ULPI_BYPASS] = UHH_HOSTCONFIG_P3_ULPI_BYPASS,
+ 	},
+ };
++#endif
+ 
+ enum {
+ 	PORT_UNUSED,
+@@ -128,6 +130,7 @@ CFATTACH_DECL_NEW(ti_usb, sizeof(struct 
+ static void
+ ti_usb_init(struct ti_usb_softc *sc)
+ {
++#ifndef OMAP4_PANDA
+ 	uint32_t val;
+ 	int port;
+ 
+@@ -157,6 +160,7 @@ ti_usb_init(struct ti_usb_softc *sc)
+ 			val |= ti_usb_portbits[port][ULPI_BYPASS];
+ 	}
+ 	WR4(sc, UHH_HOSTCONFIG, val);
++#endif
+ }
+ 
+ static int

@@ -1,19 +1,20 @@
-Index: sys/arch/evbarm/conf/GENERIC
+Index: GENERIC
 ===================================================================
 RCS file: /cvsroot/src/sys/arch/evbarm/conf/GENERIC,v
 retrieving revision 1.115.2.1
 diff -u -p -r1.115.2.1 GENERIC
---- sys/arch/evbarm/conf/GENERIC	28 May 2023 10:14:36 -0000	1.115.2.1
-+++ sys/arch/evbarm/conf/GENERIC	18 Apr 2025 13:57:12 -0000
-@@ -20,6 +20,7 @@ options 	SOC_IMX6SX
+--- GENERIC	28 May 2023 10:14:36 -0000	1.115.2.1
++++ GENERIC	13 Sep 2025 08:54:13 -0000
+@@ -20,6 +20,8 @@ options 	SOC_IMX6SX
  options 	SOC_IMX7D
  options 	SOC_MESON8B
  options 	SOC_OMAP3
 +options 	SOC_OMAP4
++options 	OMAP4_PANDA
  options 	SOC_RK3288
  options 	SOC_SUN4I_A10
  options 	SOC_SUN5I_A13
-@@ -64,6 +65,7 @@ options 	MSGBUFSIZE=32768
+@@ -64,6 +66,7 @@ options 	MSGBUFSIZE=32768
  #options 	EARLYCONS=exynos, CONSADDR=0x12c20000
  
  #options 	EARLYCONS=imx, CONSADDR=0x02020000
@@ -21,7 +22,7 @@ diff -u -p -r1.115.2.1 GENERIC
  
  # PICO-PI-IMX7
  #options	EARLYCONS=imx, CONSADDR=0x30a70000 # serial4
-@@ -72,6 +74,7 @@ options 	MSGBUFSIZE=32768
+@@ -72,6 +75,7 @@ options 	MSGBUFSIZE=32768
  #options 	EARLYCONS=meson, CONSADDR=0xc81004c0
  
  #options 	EARLYCONS=omap3, CONSADDR=0x49020000
@@ -29,7 +30,7 @@ diff -u -p -r1.115.2.1 GENERIC
  #options 	EARLYCONS=rk3328, CONSADDR=0xff130000
  #options 	EARLYCONS=sunxi, CONSADDR=0x01c28000
  
-@@ -142,6 +145,7 @@ meson8bclkc* 	at fdt? pass 2		# Amlogic 
+@@ -142,6 +146,7 @@ meson8bclkc* 	at fdt? pass 2		# Amlogic 
  mesonresets* 	at fdt? pass 2		# Amlogic Meson misc. clock resets
  omap3cm* 	at fdt? pass 1		# TI OMAP3 CM
  omap3prm* 	at fdt? pass 1		# TI OMAP3 PRM
@@ -37,7 +38,7 @@ diff -u -p -r1.115.2.1 GENERIC
  rkcru*		at fdt? pass 2		# Rockchip RK3288 CRU
  sun4ia10ccu* 	at fdt? pass 2		# Allwinner A10/A20 CCU
  sun5ia13ccu* 	at fdt? pass 2		# Allwinner A13 CCU
-@@ -160,8 +164,10 @@ sun9immcclk* 	at fdt? pass 2		# Allwinne
+@@ -160,8 +165,10 @@ sun9immcclk* 	at fdt? pass 2		# Allwinne
  sun9iusbclk* 	at fdt? pass 2		# Allwinner A80 USB HCI
  tegra124car* 	at fdt? pass 3		# NVIDIA Tegra CAR (T124)
  tegra210car* 	at fdt? pass 3		# NVIDIA Tegra CAR (T210)
@@ -48,7 +49,7 @@ diff -u -p -r1.115.2.1 GENERIC
  timuxclk* 	at fdt? pass 1		# TI mux clock
  zynqclk*	at fdt? pass 1		# Xilinx Zynq PS clocks
  
-@@ -188,7 +194,7 @@ syscon*		at fdt? pass 1		# Generic Syste
+@@ -188,7 +195,7 @@ syscon*		at fdt? pass 1		# Generic Syste
  tisysc*		at fdt? pass 2		# TI sysc interconnect
  
  # Timer
@@ -57,7 +58,7 @@ diff -u -p -r1.115.2.1 GENERIC
  arma9ptmr* 	at a9ptmr?
  a9tmr* 		at fdt? pass 2		# ARM Cortex A5/A9 Timer
  arma9tmr* 	at a9tmr?
-@@ -220,6 +226,7 @@ exyointr* 	at fdt? pass 1		# Samsung Exy
+@@ -220,6 +227,7 @@ exyointr* 	at fdt? pass 1		# Samsung Exy
  imxgpc* 	at fdt? pass 2		# i.MX General Power Controller INTC
  imx7gpc* 	at fdt? pass 2		# i.MX General Power Controller v2 INTC
  omapintc* 	at fdt? pass 2		# TI OMAP INTC

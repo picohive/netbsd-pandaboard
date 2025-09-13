@@ -15,6 +15,7 @@
 * /usr/src/sys/arch/arm/ti/ti_omaptimer.c
 * /usr/src/sys/arch/arm/ti/ti_omapwugen.c
 * /usr/src/sys/arch/arm/ti/ti_prcm.c
+* /usr/src/sys/arch/arm/ti/ti_usb.c
 * /usr/src/sys/arch/evbarm/conf/GENERIC
 * /usr/src/sys/dev/fdt/fixedfactorclock.c
 * /usr/src/sys/dtb/arm/Makefile
