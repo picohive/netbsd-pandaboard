@@ -4,36 +4,28 @@ RCS file: /cvsroot/src/sys/arch/arm/ti/ti_usb.c,v
 retrieving revision 1.2
 diff -u -p -r1.2 ti_usb.c
 --- ti_usb.c	27 Jan 2021 03:10:20 -0000	1.2
-+++ ti_usb.c	13 Sep 2025 08:46:34 -0000
-@@ -84,6 +84,7 @@ enum {
- 	TI_USB_NBITS
++++ ti_usb.c	27 Sep 2025 07:16:26 -0000
+@@ -76,6 +76,11 @@ static const struct device_compatible_en
+ 	DEVICE_COMPAT_EOL
  };
  
-+#ifndef OMAP4_PANDA
- static const uint32_t ti_usb_portbits[TI_USB_NPORTS][TI_USB_NBITS] = {
- 	[0] = {
- 		[CONNECT_STATUS] = UHH_HOSTCONFIG_P1_CONNECT_STATUS,
-@@ -98,6 +99,7 @@ static const uint32_t ti_usb_portbits[TI
- 		[ULPI_BYPASS] = UHH_HOSTCONFIG_P3_ULPI_BYPASS,
- 	},
- };
-+#endif
++static const struct device_compatible_entry board_compat_data[] = {
++	{ .compat = "ti,omap4-panda" },
++	DEVICE_COMPAT_EOL
++};
++
+ #define	TI_USB_NPORTS	3
  
  enum {
- 	PORT_UNUSED,
-@@ -128,6 +130,7 @@ CFATTACH_DECL_NEW(ti_usb, sizeof(struct 
- static void
- ti_usb_init(struct ti_usb_softc *sc)
- {
-+#ifndef OMAP4_PANDA
- 	uint32_t val;
- 	int port;
+@@ -215,7 +220,10 @@ ti_usb_attach(device_t parent, device_t 
+ 	aprint_naive("\n");
+ 	aprint_normal(": OMAP HS USB Host\n");
  
-@@ -157,6 +160,7 @@ ti_usb_init(struct ti_usb_softc *sc)
- 			val |= ti_usb_portbits[port][ULPI_BYPASS];
- 	}
- 	WR4(sc, UHH_HOSTCONFIG, val);
-+#endif
+-	ti_usb_init(sc);
++	const struct device_compatible_entry *dce =
++	    of_compatible_lookup(OF_finddevice("/"), board_compat_data);
++	if (dce == NULL)
++		ti_usb_init(sc);
+ 
+ 	fdt_add_bus(self, phandle, faa);
  }
- 
- static int
